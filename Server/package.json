@@ -1,0 +1,19 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bym24v/Simple_Chat_Unity.git"
+  },
+  "author": "Bym24v",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bym24v/Simple_Chat_Unity/issues"
+  },
+  "homepage": "https://github.com/Bym24v/Simple_Chat_Unity#readme",
+  "dependencies": {
+    "socket.io": "^1.4.6"
+  }
+}
