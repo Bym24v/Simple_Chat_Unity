@@ -15,7 +15,7 @@ var socket = {
       
       socket.on("chat", function(data){
         
-        console.log(data);
+        console.log(data.msg);
         
       });
       

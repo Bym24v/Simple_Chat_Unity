@@ -24,6 +24,7 @@ public class ChatController : MonoBehaviour
     [Header("Login Input")]
     public InputField inputLogin;
     public Button btnLogin;
+    public GameObject player;
 
     // Chat
     [Header("Chat Input")]
@@ -72,13 +73,13 @@ public class ChatController : MonoBehaviour
                 if (inputChat.text != "")
                 {
 
-                    // Enviar al Servidor 
-                    EnviarChat(inputChat.text);
-
                     // Instatiate Text
                     GameObject i = Instantiate(isTexto);
-                    i.GetComponent<Text>().text = " " + inputLogin.text + ": " + inputChat.text;
+                    i.GetComponent<Text>().text = "     " + inputLogin.text + ": " + inputChat.text;
                     i.transform.SetParent(chatContent.transform);
+
+                    // Enviar al Servidor 
+                    EnviarChat(inputChat.text);
 
                     // Log
                     Debug.Log(" " + inputLogin.text + ": " + inputChat.text);
@@ -100,6 +101,8 @@ public class ChatController : MonoBehaviour
     {
         if (inputLogin.text != "")
         {
+            Instantiate(player, new Vector3(50, 1, 50), Quaternion.identity);
+
             loginPanel.SetActive(false);
             chatPanel.SetActive(true);
         }
