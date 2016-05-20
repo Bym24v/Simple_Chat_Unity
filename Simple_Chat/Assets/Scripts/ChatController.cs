@@ -20,6 +20,14 @@ public class ChatController : MonoBehaviour {
     // Chat
     [Header("Chat Input")]
     public InputField inputChat;
+
+    // Chat Content
+    [Header("Chat Input")]
+    public GameObject chatContent;
+
+    // Texto
+    [Header("Texto Spawn")]
+    public GameObject isTexto;
     
 
 
@@ -41,12 +49,38 @@ public class ChatController : MonoBehaviour {
             loginPanel.SetActive(false);
             chatPanel.SetActive(true);
         }
+        else
+        {
+            inputLogin.text = "Dev";
+        }
     }
 	
 	
 	void FixedUpdate () {
-	
 
 
+        if (inputChat.isFocused)
+        {                                      //OR
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+            {
+                Debug.Log(" " + inputLogin.text + ": " + inputChat.text);
+
+
+                if (inputChat.text != "")
+                {
+                    // Instatiate Text
+                    GameObject i = Instantiate(isTexto);
+                    i.GetComponent<Text>().text = " " + inputLogin.text + ": " + inputChat.text;
+                    i.transform.SetParent(chatContent.transform);
+
+
+                    // Reset
+                    inputChat.text = "";
+                    inputChat.ActivateInputField();
+                    inputChat.Select();
+                }
+               
+            }
+        }
 	}
 }
