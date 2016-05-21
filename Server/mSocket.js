@@ -13,6 +13,14 @@ var socket = {
       
       console.log("Cliente Conectado");
       
+      // Login
+      socket.on('login', function(data){
+        
+        socket.emit('login', data);
+        
+      });
+      
+      // Chat
       socket.on("chat", function(data){
         
         console.log(data.msg);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using SocketIO;
-
+using System.Text.RegularExpressions;
 
 public class ChatController : MonoBehaviour
 {
@@ -47,7 +47,8 @@ public class ChatController : MonoBehaviour
     {
 
         // Socket.io
-        mSocket.On("Chat", RecivirChat);
+        mSocket.On("chat", RecivirChat);
+        mSocket.On("login", OnLogin);
 
 
         // Paneles
@@ -75,7 +76,7 @@ public class ChatController : MonoBehaviour
 
                     // Instatiate Text
                     GameObject i = Instantiate(isTexto);
-                    i.GetComponent<Text>().text = "     " + inputLogin.text + ": " + inputChat.text;
+                    i.GetComponent<Text>().text = " " + inputLogin.text + ": " + inputChat.text;
                     i.transform.SetParent(chatContent.transform);
 
                     // Enviar al Servidor 
@@ -101,10 +102,11 @@ public class ChatController : MonoBehaviour
     {
         if (inputLogin.text != "")
         {
-            Instantiate(player, new Vector3(50, 1, 50), Quaternion.identity);
-
-            loginPanel.SetActive(false);
-            chatPanel.SetActive(true);
+            var data = new Dictionary<string, string>();
+            data["usr"] = inputLogin.text;
+            mSocket.Emit("login", new JSONObject(data));
+            Debug.Log("login");
+            
         }
         else
         {
@@ -112,6 +114,21 @@ public class ChatController : MonoBehaviour
         }
     }
 
+    void OnLogin(SocketIOEvent obj)
+    {
+        //GameObject setPlayer =  (GameObject)Instantiate(player, new Vector3(50, 1, 50), Quaternion.identity);
+        //setPlayer.gameObject.name = JsonString(obj.data.GetField("usr").ToString(), "\"");
+        loginPanel.SetActive(false);
+        chatPanel.SetActive(true);
+    }
+
+    // Parse
+    string JsonString(string target, string s)
+    {
+        string[] newString = Regex.Split(target, s);
+
+        return newString[1];
+    }
 
     // Enviar
     void EnviarChat(string value)
@@ -126,6 +143,8 @@ public class ChatController : MonoBehaviour
     //Recivir
     void RecivirChat(SocketIOEvent obj)
     {
-
+        GameObject SetText = (GameObject)Instantiate(isTexto);
+        SetText.GetComponent<Text>().text = " " + JsonString(obj.data.GetField("usr").ToString(), "\"") + ": " + JsonString(obj.data.GetField("msg").ToString(), "\"");
+        SetText.transform.SetParent(chatContent.transform);
     }
 }

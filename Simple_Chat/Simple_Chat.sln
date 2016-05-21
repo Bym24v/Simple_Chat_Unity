@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple_Chat.CSharp.Plugins", "Simple_Chat.CSharp.Plugins.csproj", "{CCC66ACE-8F3B-B23C-30CC-7FEB05E721CE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple_Chat.CSharp", "Simple_Chat.CSharp.csproj", "{3AE1575F-26E9-CC44-89DF-1919146024FA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple_Chat.CSharp.Editor", "Simple_Chat.CSharp.Editor.csproj", "{3A5B9DCC-E5AA-2D01-CFE6-423233A818A2}"
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CCC66ACE-8F3B-B23C-30CC-7FEB05E721CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CCC66ACE-8F3B-B23C-30CC-7FEB05E721CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CCC66ACE-8F3B-B23C-30CC-7FEB05E721CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CCC66ACE-8F3B-B23C-30CC-7FEB05E721CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3AE1575F-26E9-CC44-89DF-1919146024FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3AE1575F-26E9-CC44-89DF-1919146024FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AE1575F-26E9-CC44-89DF-1919146024FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
