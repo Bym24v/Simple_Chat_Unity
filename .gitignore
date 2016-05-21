@@ -2,4 +2,8 @@
 # Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
 ################################################################################
 
+/Server/node_modules
 /Simple_Chat/Temp
+/Simple_Chat/Library
+/Simple_Chat/Assets/Standard Assets
+
