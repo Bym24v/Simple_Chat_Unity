@@ -146,5 +146,7 @@ public class ChatController : MonoBehaviour
         GameObject SetText = (GameObject)Instantiate(isTexto);
         SetText.GetComponent<Text>().text = " " + JsonString(obj.data.GetField("usr").ToString(), "\"") + ": " + JsonString(obj.data.GetField("msg").ToString(), "\"");
         SetText.transform.SetParent(chatContent.transform);
+
+        //Debug.Log(obj.data.GetField("usr").ToString());
     }
 }

@@ -23,6 +23,8 @@ var socket = {
       // Chat
       socket.on("chat", function(data){
         
+        socket.broadcast.emit('chat', data);
+        
         console.log(data.msg);
         
       });
