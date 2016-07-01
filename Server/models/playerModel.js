@@ -5,19 +5,13 @@ var ObjectId = require('mongodb').ObjectID;
 // Config DB
 var config = require('./../config');
 
-// Player
-var playerClass = require('./../player')
-
-
 var test = {
-  player: {
-    "name": "Dev"
-  }
+  "name": "Manuel" 
 }
-
+    
 var chatModelController = function(db, callback) {
   
-   db.collection('chat').insertOne( test, function(err, result) {
+   db.collection('chat').insertOne( GuardarChat.init(), function(err, result) {
      
     assert.equal(err, null);
     console.log("Guardado con Exito.");
@@ -26,11 +20,14 @@ var chatModelController = function(db, callback) {
   });
 };
 
-
-
 var GuardarChat = {
-
-  init: function(){
+  
+  init: function(data){
+    console.log(data)
+    return data;
+  },
+  
+  Start: function(){
     
     MongoClient.connect(config.url, function(err, db) {
         
