@@ -4,6 +4,15 @@ var port = process.env.PORT || 8000;
 // Dependencias
 var io = require('socket.io')(port);
 
+// Model
+var playerController = require('./controller/playerController');
+var playerModel = require('./models/playerModel');
+
+
+
+//chatController.init();
+
+//chatDb.init();
 
 var socket = {
   
@@ -11,20 +20,19 @@ var socket = {
     
     io.on('connection', function(socket){
       
+      // Player
+      var player = require('./player');
+      playerInst = new player();
+      
       console.log("Cliente Conectado");
       
       // Login
-      socket.on('login', function(data){
-        
-        socket.emit('login', data);
-        
-      });
+      socket.on('login', playerInst.playerName);
       
       // Chat
       socket.on("chat", function(data){
         
         socket.broadcast.emit('chat', data);
-        
         console.log(data.msg);
         
       });
@@ -35,8 +43,8 @@ var socket = {
         
       });
       
-    })
-  },
+    });
+  }
 
 }
 module.exports = socket;
